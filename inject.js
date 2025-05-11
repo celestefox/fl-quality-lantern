@@ -55,7 +55,8 @@
         }
 
         if (!(targetUrl.includes("/storylet")
-            || targetUrl.includes("/choosebranch"))) {
+            || targetUrl.includes("/choosebranch")
+            || targetUrl.includes("/agents"))) {
             return;
         }
 
@@ -63,7 +64,8 @@
 
         let data = JSON.parse(response.target.responseText);
 
-        if (targetUrl.endsWith("/choosebranch")) {
+        if (targetUrl.endsWith("/choosebranch")
+            || targetUrl.endsWith("/api/agents/branch")) {
             if ("messages" in data) {
                 for (const message of data.messages) {
                     if (IGNORED_TYPES.includes(message["type"])) {
@@ -89,7 +91,8 @@
 
         if (targetUrl.endsWith("/api/storylet")
             || targetUrl.endsWith("/api/storylet/goback")
-            || targetUrl.endsWith("/api/storylet/begin")) {
+            || targetUrl.endsWith("/api/storylet/begin")
+            || targetUrl.endsWith("/api/agents/report")) {
             if ("storylet" in data) {
                 isModified = revealQualities(data.storylet) || isModified;
 
