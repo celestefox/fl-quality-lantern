@@ -82,7 +82,7 @@
 
                     if (message["type"] === "QualityExplicitlySetMessage"
                         || message["type"] === "StandardQualityChangeMessage") {
-                        message.message += `<br>${message.possession.nameAndLevel}`;
+                        message.message += `<br><p title="${message.possession.level}">${message.possession.nameAndLevel}</p>`;
                         isModified = true;
                     }
                 }
